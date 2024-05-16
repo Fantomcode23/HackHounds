@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MediVault</title>
+</head>
+<body>
+    <div id="content">
+        <h1>Welcome to MediVault</h1>
+        <p>Please select your user type:</p>
+        <ul>
+            <li><a href="#" onclick="selectUserType('patient')">Patient</a></li>
+            <li><a href="#" onclick="selectUserType('doctor')">Doctor</a></li>
+            <li><a href="#" onclick="selectUserType('hospitalAdmin')">Hospital Admin</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function selectUserType(userType) {
+            sessionStorage.setItem('userType', userType);
+            window.location.href = 'welcome.html';
+        }
+    </script>
+</body>
+</html>
