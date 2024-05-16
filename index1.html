@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediVault</title>
+</head>
+<body>
+    <div id="content">
+        <h1>Welcome to MediVault</h1>
+        <p>Please select an option:</p>
+        <ul>
+            <li><a href="#" onclick="selectOption('account')">Account</a></li>
+            <li><a href="#" onclick="selectOption('documents')">Documents</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function selectOption(option) {
+            if (option === 'account') {
+                window.location.href = 'index.html';
+            } else if (option === 'documents') {
+                window.location.href = 'user_options.html';
+            }
+        }
+    </script>
+</body>
+</html>

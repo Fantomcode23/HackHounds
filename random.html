@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+</head>
+<body>
+    <div id="content">
+        <h1>Enter OTP</h1>
+        <form onsubmit="return verifyOTP()">
+            <label for="otp">OTP:</label>
+            <input type="text" id="otp" name="otp" required><br><br>
+            <button type="submit">Verify OTP</button>
+        </form>
+    </div>
+
+    <script>
+        function verifyOTP() {
+            event.preventDefault();
+            const otpInput = document.getElementById('otp').value;
+
+            // Simulate successful OTP verification
+            alert('OTP Verified. Account creation successful!');
+            setTimeout(() => {
+                window.location.href = 'index.html'; // Redirect to main page
+            }, 5000); // Redirect after 5 seconds
+            return false;
+        }
+    </script>
+</body>
+</html>

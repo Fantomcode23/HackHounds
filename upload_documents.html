@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Documents</title>
+</head>
+<body>
+    <h2>Upload Documents</h2>
+    <form id="uploadForm" enctype="multipart/form-data" action="upload.php" method="POST">
+        <input type="file" id="documentFile" name="documentFile" required><br><br>
+        <button type="submit">Upload</button>
+    </form>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const fileInput = document.getElementById('documentFile');
+            const file = fileInput.files[0]; // Get the selected file
+
+            // Perform file upload logic
+            if (file) {
+                const formData = new FormData();
+                formData.append('documentFile', file);
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'upload.php'); // Ensure path to upload script
+
+                // Handle successful upload (optional)
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        alert('File uploaded successfully!');
+                    } else {
+                        alert(`Upload failed with status: ${xhr.status}`); // Display error status
+                    }
+                };
+
+                // Handle errors (important for debugging)
+                xhr.onerror = function(error) {
+                    console.error('Error uploading file:', error);
+                    alert('An error occurred during upload. Please check your console for details.');
+                };
+
+                xhr.send(formData);
+            } else {
+                alert('Please select a file to upload.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Documents</title>
+</head>
+<body>
+  <h2>View Documents</h2>
+  <ul id="documentList"></ul>
+
+  <script>
+    // Get the document list container
+    const documentList = document.getElementById('documentList');
+
+    // Function to display documents or error message
+    function displayDocuments(documents) {
+      documentList.innerHTML = ''; // Clear existing content
+
+      if (documents.length > 0) {
+        // Create list items for each document
+        documents.forEach(document => {
+          const listItem = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = `uploads/${document}`;
+          link.textContent = document;
+          listItem.appendChild(link);
+          documentList.appendChild(listItem);
+        });
+      } else {
+        // Display message if no documents found
+        documentList.textContent = 'No documents available to view.';
+      }
+    }
+
+    // Function to make AJAX request for document list
+    function getDocumentList() {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'get_documents.php'); // Replace with your script name
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          const documents = JSON.parse(xhr.responseText);
+          displayDocuments(documents);
+        } else {
+          console.error('Failed to retrieve documents:', xhr.statusText);
+          documentList.textContent = 'Error fetching documents.';
+        }
+      };
+      xhr.send();
+    }
+
+    // Call getDocumentList on page load
+    getDocumentList();
+  </script>
+</body>
+</html>
