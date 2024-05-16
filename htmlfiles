@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediVault</title>
+</head>
+<body>
+    <h1>MediVault</h1>
+    <p>Welcome to MediVault. Please choose an option:</p>
+    <button onclick="signup()">Sign Up</button>
+    <button onclick="login()">Login</button>
+
+    <div id="signupForm" style="display: none;">
+        <input type="text" placeholder="Phone Number">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="New Password">
+        <input type="text" placeholder="Name">
+        <input type="date" placeholder="Date of Birth">
+        <input type="text" placeholder="Aadhar Number">
+        <button onclick="submitDetails()">Submit</button>
+    </div>
+
+    <div id="otpForm" style="display: none;">
+        <input type="text" placeholder="Enter OTP">
+        <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+
+    <div id="loginForm" style="display: none;">
+        <input type="text" placeholder="Login ID">
+        <input type="password" placeholder="Password">
+        <button onclick="submitLogin()">Login</button>
+    </div>
+
+    <div id="userDetails" style="display: none;">
+        <p>User Details:</p>
+        <p>Phone Number: </p>
+        <p>Email: </p>
+        <p>Name: </p>
+        <p>Date of Birth: </p>
+        <p>Aadhar Number: </p>
+        <button onclick="continueToMain()">Continue</button>
+    </div>
+
+    <script>
+        function signup() {
+            document.getElementById('signupForm').style.display = 'block';
+        }
+
+        function submitDetails() {
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('otpForm').style.display = 'block';
+        }
+
+        function verifyOTP() {
+            // Verify OTP logic
+            document.getElementById('otpForm').style.display = 'none';
+            document.getElementById('userDetails').style.display = 'block';
+        }
+
+        function login() {
+            document.getElementById('loginForm').style.display = 'block';
+        }
+
+        function submitLogin() {
+            // Login logic
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('userDetails').style.display = 'block';
+        }
+
+        function continueToMain() {
+            document.getElementById('userDetails').style.display = 'none';
+            // Redirect to main page after 5 seconds
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
 
